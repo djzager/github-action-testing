@@ -1,0 +1,13 @@
+name: Cherry Pick
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  cherry_pick_job:
+    if: contains(github.event.issue.labels.*.name, 'cherry-pick/')
+    uses: ./.github/workflows/cherry-pick.yml
